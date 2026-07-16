@@ -1,5 +1,5 @@
 import { getRedis } from '../redis.js';
-import type { MailchimpConnection, OAuthState } from '../../../types/oauth.js';
+import type { MailchimpConnection, OAuthState, StoredPortalConnection } from '../../../types/oauth.js';
 
 const callbackPath = '/api/oauth/mailchimp/callback';
 
@@ -51,6 +51,15 @@ export async function completeMailchimpAuthorization(code: string, state: string
     connectedAt: new Date().toISOString(),
   };
   await redis.set(`connection:mailchimp:${savedState.portalId}`, connection);
+  const existingPortalConnection = await redis.get<StoredPortalConnection>(`portal:${savedState.portalId}`);
+  const portalConnection: StoredPortalConnection = {
+    ...existingPortalConnection,
+    mailchimpAccessToken: connection.accessToken,
+    mailchimpServer: connection.dataCenter,
+    connected: true,
+    connectedAt: connection.connectedAt,
+  };
+  await redis.set(`portal:${savedState.portalId}`, portalConnection);
 }
 
 function requiredEnvironment(name: string): string {

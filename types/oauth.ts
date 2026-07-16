@@ -7,3 +7,13 @@ export interface MailchimpConnection {
   dataCenter: string;
   connectedAt: string;
 }
+
+export interface StoredPortalConnection {
+  mailchimpAccessToken?: string;
+  mailchimpServer?: string;
+  connected?: boolean;
+  connectedAt?: string;
+  hubspotAccessToken?: string;
+  hubspotRefreshToken?: string;
+  hubspotAccessTokenExpiresAt?: string;
+}

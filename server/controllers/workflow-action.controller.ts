@@ -10,6 +10,7 @@ export class WorkflowActionController {
       recipient: inputs.recipientEmail,
       subject: inputs.subject,
       body: inputs.body,
+      senderEmail: inputs.senderEmail,
       template: inputs.mailchimpTemplate,
     });
   }

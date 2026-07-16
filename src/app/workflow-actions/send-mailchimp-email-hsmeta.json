@@ -33,19 +33,24 @@
           "fieldType": "textarea"
         },
         "supportedValueTypes": ["STATIC_VALUE"],
-        "isRequired": true
+        "isRequired": false
+      },
+      {
+        "typeDefinition": {
+          "name": "senderEmail",
+          "type": "enumeration",
+          "fieldType": "select",
+          "optionsUrl": "https://mailchimp-app-seven.vercel.app/api/hubspot/users"
+        },
+        "supportedValueTypes": ["STATIC_VALUE"],
+        "isRequired": false
       },
       {
         "typeDefinition": {
           "name": "mailchimpTemplate",
           "type": "enumeration",
           "fieldType": "select",
-          "options": [
-            { "value": "welcome_email", "label": "Welcome Email" },
-            { "value": "newsletter", "label": "Newsletter" },
-            { "value": "invoice", "label": "Invoice" },
-            { "value": "promotion", "label": "Promotion" }
-          ]
+          "optionsUrl": "https://mailchimp-app-seven.vercel.app/api/mailchimp/templates"
         },
         "supportedValueTypes": ["STATIC_VALUE"],
         "isRequired": true
@@ -61,27 +66,15 @@
           "recipientEmail": "Recipient Email",
           "subject": "Subject",
           "body": "Email Body",
+          "senderEmail": "Sender Email",
           "mailchimpTemplate": "Mailchimp Template"
         },
         "inputFieldDescriptions": {
           "recipientEmail": "Enter an email address or map a CRM property.",
           "subject": "Enter the email subject.",
           "body": "Write the email body that will be sent with the selected template.",
+          "senderEmail": "Select a HubSpot user as the sender.",
           "mailchimpTemplate": "Select the Mailchimp template to send."
-        },
-        "inputFieldOptionLabels": {
-          "welcome_email": {
-            "label": "Welcome Email"
-          },
-          "newsletter": {
-            "label": "Newsletter"
-          },
-          "invoice": {
-            "label": "Invoice"
-          },
-          "promotion": {
-            "label": "Promotion"
-          }
         }
       }
     },

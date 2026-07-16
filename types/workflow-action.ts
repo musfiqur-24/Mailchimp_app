@@ -5,6 +5,7 @@ export interface WorkflowActionExecution {
     recipientEmail?: string;
     subject?: string;
     body?: string;
+    senderEmail?: string;
     mailchimpTemplate?: string;
   };
 }
