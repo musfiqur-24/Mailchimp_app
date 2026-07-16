@@ -8,6 +8,16 @@
       { "client": "WORKFLOWS" }
     ],
     "inputFields": [
+        {
+        "typeDefinition": {
+          "name": "senderEmail",
+          "type": "enumeration",
+          "fieldType": "select",
+          "optionsUrl": "https://mailchimp-app-seven.vercel.app/api/hubspot/users"
+        },
+        "supportedValueTypes": ["STATIC_VALUE"],
+        "isRequired": false
+      },
       {
         "typeDefinition": {
           "name": "recipientEmail",
@@ -28,23 +38,14 @@
       },
       {
         "typeDefinition": {
-          "name": "body",
+          "name": "Email Body",
           "type": "string",
           "fieldType": "textarea"
         },
         "supportedValueTypes": ["STATIC_VALUE"],
         "isRequired": false
       },
-      {
-        "typeDefinition": {
-          "name": "senderEmail",
-          "type": "enumeration",
-          "fieldType": "select",
-          "optionsUrl": "https://mailchimp-app-seven.vercel.app/api/hubspot/users"
-        },
-        "supportedValueTypes": ["STATIC_VALUE"],
-        "isRequired": false
-      },
+    
       {
         "typeDefinition": {
           "name": "mailchimpTemplate",
