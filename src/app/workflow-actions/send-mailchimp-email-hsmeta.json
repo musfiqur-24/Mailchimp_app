@@ -14,7 +14,7 @@
           "type": "string",
           "fieldType": "text"
         },
-        "supportedValueTypes": ["STATIC_VALUE", "OBJECT_PROPERTY"],
+        "supportedValueTypes": ["OBJECT_PROPERTY"],
         "isRequired": true
       },
       {
@@ -59,10 +59,18 @@
           "mailchimpTemplate": "Select the Mailchimp template to send."
         },
         "inputFieldOptionLabels": {
-          "welcome_email": "Welcome Email",
-          "newsletter": "Newsletter",
-          "invoice": "Invoice",
-          "promotion": "Promotion"
+          "welcome_email": {
+            "label": "Welcome Email"
+          },
+          "newsletter": {
+            "label": "Newsletter"
+          },
+          "invoice": {
+            "label": "Invoice"
+          },
+          "promotion": {
+            "label": "Promotion"
+          }
         }
       }
     },

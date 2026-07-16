@@ -11,6 +11,7 @@
         "https://mailchimp-app-seven.vercel.app/api/oauth/hubspot/callback"
       ],
       "requiredScopes": [
+        "oauth",
         "crm.objects.contacts.read"
       ],
       "optionalScopes": [],

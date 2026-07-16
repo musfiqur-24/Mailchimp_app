@@ -1,17 +1,27 @@
-/**
- * HubSpot has already completed app installation before this redirect occurs.
- * This app does not yet call HubSpot APIs, so token exchange is deferred until
- * a HubSpot API feature requires it.
- */
+import { completeHubSpotAuthorization } from '../../../server/services/hubspot/auth.js';
+
 export default {
-  fetch(request: Request): Response {
-    const error = new URL(request.url).searchParams.get('error');
-    const message = error
-      ? 'HubSpot app installation was cancelled or could not be completed.'
-      : 'Mailchimp Workflow is installed. Return to HubSpot to connect Mailchimp.';
-    return new Response(`<!doctype html><title>Mailchimp Workflow</title><p>${message}</p>`, {
-      status: error ? 400 : 200,
-      headers: { 'content-type': 'text/html; charset=utf-8' },
-    });
+  async fetch(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+    const code = url.searchParams.get('code');
+
+    if (!code || url.searchParams.has('error')) {
+      return page('HubSpot app installation was cancelled or could not be completed.', 400);
+    }
+
+    try {
+      await completeHubSpotAuthorization(code);
+      return page('Mailchimp Workflow is installed. Return to HubSpot to connect Mailchimp.');
+    } catch (error) {
+      console.error('HubSpot OAuth token exchange failed', error);
+      return page('HubSpot app installation could not be completed. Please try again.', 500);
+    }
   },
 };
+
+function page(message: string, status = 200): Response {
+  return new Response(`<!doctype html><title>Mailchimp Workflow</title><p>${message}</p>`, {
+    status,
+    headers: { 'content-type': 'text/html; charset=utf-8' },
+  });
+}
