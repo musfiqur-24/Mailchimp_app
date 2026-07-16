@@ -28,6 +28,15 @@
       },
       {
         "typeDefinition": {
+          "name": "body",
+          "type": "string",
+          "fieldType": "textarea"
+        },
+        "supportedValueTypes": ["STATIC_VALUE"],
+        "isRequired": true
+      },
+      {
+        "typeDefinition": {
           "name": "mailchimpTemplate",
           "type": "enumeration",
           "fieldType": "select",
@@ -51,11 +60,13 @@
         "inputFieldLabels": {
           "recipientEmail": "Recipient Email",
           "subject": "Subject",
+          "body": "Email Body",
           "mailchimpTemplate": "Mailchimp Template"
         },
         "inputFieldDescriptions": {
           "recipientEmail": "Enter an email address or map a CRM property.",
           "subject": "Enter the email subject.",
+          "body": "Write the email body that will be sent with the selected template.",
           "mailchimpTemplate": "Select the Mailchimp template to send."
         },
         "inputFieldOptionLabels": {

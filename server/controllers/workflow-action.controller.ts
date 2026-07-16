@@ -9,6 +9,7 @@ export class WorkflowActionController {
       objectId: payload.object?.objectId,
       recipient: inputs.recipientEmail,
       subject: inputs.subject,
+      body: inputs.body,
       template: inputs.mailchimpTemplate,
     });
   }

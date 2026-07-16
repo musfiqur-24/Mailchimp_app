@@ -4,6 +4,7 @@ export interface WorkflowActionExecution {
   inputFields?: {
     recipientEmail?: string;
     subject?: string;
+    body?: string;
     mailchimpTemplate?: string;
   };
 }
