@@ -103,3 +103,6 @@ dist
 .tern-port
 
 hubspot.config.yml
+
+.vercel
+.env*.local

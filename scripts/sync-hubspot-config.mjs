@@ -11,14 +11,14 @@ const workflowMetadataPath = 'src/app/workflow-actions/send-mailchimp-email-hsme
 
 let appMetadata = await readFile(appMetadataPath, 'utf8');
 appMetadata = appMetadata.replace(
-  /https:\/\/[^"/]+(?:\/[^"/]*)*\/api\/oauth\/callback/g,
-  `${baseUrl}/api/oauth/callback`,
+  /https:\/\/[^"/]+(?:\/[^"/]*)*\/api\/oauth(?:\/hubspot)?\/callback/g,
+  `${baseUrl}/api/oauth/hubspot/callback`,
 );
 await writeFile(appMetadataPath, appMetadata);
 
 let workflowMetadata = await readFile(workflowMetadataPath, 'utf8');
 workflowMetadata = workflowMetadata.replace(
-  /https:\/\/[^"/]+(?:\/[^"/]*)*\/workflow-actions\/send-mailchimp-email/g,
+  /https:\/\/[^"/]+(?:\/[^"/]*)*\/api\/workflow-actions\/send-mailchimp-email/g,
   `${baseUrl}/api/workflow-actions/send-mailchimp-email`,
 );
 await writeFile(workflowMetadataPath, workflowMetadata);

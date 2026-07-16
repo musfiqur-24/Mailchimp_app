@@ -1,0 +1,13 @@
+{
+  "name": "mailchimp-workflow-settings",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@hubspot/ui-extensions": "latest",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "typescript": "^5.0.0"
+  }
+}

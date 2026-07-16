@@ -2,7 +2,7 @@
   "uid": "send_mailchimp_email",
   "type": "workflow-action",
   "config": {
-    "actionUrl": "https://api.your-domain.example/workflow-actions/send-mailchimp-email",
+    "actionUrl": "https://mailchimp-app-seven.vercel.app/api/workflow-actions/send-mailchimp-email",
     "isPublished": true,
     "supportedClients": [
       { "client": "WORKFLOWS" }

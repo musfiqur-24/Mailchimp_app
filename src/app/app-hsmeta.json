@@ -8,7 +8,7 @@
     "auth": {
       "type": "oauth",
       "redirectUrls": [
-        "https://api.your-domain.example/api/oauth/callback"
+        "https://mailchimp-app-seven.vercel.app/api/oauth/hubspot/callback"
       ],
       "requiredScopes": [
         "crm.objects.contacts.read"
@@ -17,7 +17,7 @@
       "conditionallyRequiredScopes": []
     },
     "permittedUrls": {
-      "fetch": [],
+      "fetch": ["https://mailchimp-app-seven.vercel.app"],
       "iframe": [],
       "img": []
     },
