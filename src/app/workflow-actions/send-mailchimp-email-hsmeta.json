@@ -38,7 +38,7 @@
       },
       {
         "typeDefinition": {
-          "name": "Email Body",
+          "name": "body",
           "type": "string",
           "fieldType": "textarea"
         },
