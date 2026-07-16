@@ -2,6 +2,10 @@ import { startMailchimpAuthorization } from '../../../server/services/mailchimp/
 
 export default {
   async fetch(request: Request): Promise<Response> {
+    if (request.method !== 'POST') {
+      return new Response(null, { status: 405, headers: { allow: 'POST' } });
+    }
+
     const portalId = new URL(request.url).searchParams.get('portalId');
     if (!portalId || !/^\d+$/.test(portalId)) {
       return Response.json({ message: 'A valid HubSpot portal ID is required.' }, { status: 400 });

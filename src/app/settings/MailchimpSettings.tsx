@@ -9,7 +9,7 @@ hubspot.extend(({ context }) => <MailchimpSettings context={context as Extension
 
 function MailchimpSettings({ context }: { context: ExtensionContext }) {
   const portalId = encodeURIComponent(String(context.portal.id));
-  const connectUrl = `https://mailchimp-app-seven.vercel.app/api/oauth/mailchimp/start?portalId=${portalId}`;
+  const connectUrl = `https://mailchimp-app-seven.vercel.app/api/connect-mailchimp?portalId=${portalId}`;
 
   return (
     <Flex direction="column" gap="small">
