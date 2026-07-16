@@ -1,0 +1,31 @@
+{
+  "uid": "mailchimp_workflow_app",
+  "type": "app",
+  "config": {
+    "description": "Send Mailchimp emails from HubSpot workflows.",
+    "name": "Mailchimp Workflow",
+    "distribution": "marketplace",
+    "auth": {
+      "type": "oauth",
+      "redirectUrls": [
+        "https://api.your-domain.example/api/oauth/callback"
+      ],
+      "requiredScopes": [
+        "crm.objects.contacts.read"
+      ],
+      "optionalScopes": [],
+      "conditionallyRequiredScopes": []
+    },
+    "permittedUrls": {
+      "fetch": [],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@your-domain.example",
+      "documentationUrl": "https://your-domain.example/docs",
+      "supportUrl": "https://your-domain.example/support",
+      "supportPhone": "+10000000000"
+    }
+  }
+}

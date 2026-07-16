@@ -1,0 +1,71 @@
+{
+  "uid": "send_mailchimp_email",
+  "type": "workflow-action",
+  "config": {
+    "actionUrl": "https://api.your-domain.example/workflow-actions/send-mailchimp-email",
+    "isPublished": true,
+    "supportedClients": [
+      { "client": "WORKFLOWS" }
+    ],
+    "inputFields": [
+      {
+        "typeDefinition": {
+          "name": "recipientEmail",
+          "type": "string",
+          "fieldType": "text"
+        },
+        "supportedValueTypes": ["STATIC_VALUE", "OBJECT_PROPERTY"],
+        "isRequired": true
+      },
+      {
+        "typeDefinition": {
+          "name": "subject",
+          "type": "string",
+          "fieldType": "text"
+        },
+        "supportedValueTypes": ["STATIC_VALUE"],
+        "isRequired": true
+      },
+      {
+        "typeDefinition": {
+          "name": "mailchimpTemplate",
+          "type": "enumeration",
+          "fieldType": "select",
+          "options": [
+            { "value": "welcome_email", "label": "Welcome Email" },
+            { "value": "newsletter", "label": "Newsletter" },
+            { "value": "invoice", "label": "Invoice" },
+            { "value": "promotion", "label": "Promotion" }
+          ]
+        },
+        "supportedValueTypes": ["STATIC_VALUE"],
+        "isRequired": true
+      }
+    ],
+    "labels": {
+      "en": {
+        "appDisplayName": "Mailchimp",
+        "actionName": "Send Mailchimp Email",
+        "actionDescription": "Send an email through Mailchimp from a HubSpot workflow.",
+        "actionCardContent": "Send {{mailchimpTemplate}} to {{recipientEmail}}",
+        "inputFieldLabels": {
+          "recipientEmail": "Recipient Email",
+          "subject": "Subject",
+          "mailchimpTemplate": "Mailchimp Template"
+        },
+        "inputFieldDescriptions": {
+          "recipientEmail": "Enter an email address or map a CRM property.",
+          "subject": "Enter the email subject.",
+          "mailchimpTemplate": "Select the Mailchimp template to send."
+        },
+        "inputFieldOptionLabels": {
+          "welcome_email": "Welcome Email",
+          "newsletter": "Newsletter",
+          "invoice": "Invoice",
+          "promotion": "Promotion"
+        }
+      }
+    },
+    "objectTypes": ["CONTACT"]
+  }
+}
