@@ -4,8 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/server/index.js",
     "typecheck": "tsc --noEmit",
     "sync:hubspot": "node --env-file=.env scripts/sync-hubspot-config.mjs",
     "lint": "eslint .",
