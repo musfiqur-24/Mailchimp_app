@@ -18,7 +18,7 @@ export default {
 };
 
 function page(message: string, status = 200): Response {
-  return new Response(`<!doctype html><title>Mailchimp Workflow</title><p>${message}</p>`, {
+  return new Response(`<!doctype html><title>Mailchimp App</title><p>${message}</p>`, {
     status,
     headers: { 'content-type': 'text/html; charset=utf-8' },
   });

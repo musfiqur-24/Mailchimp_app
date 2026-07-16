@@ -14,7 +14,7 @@ export default {
       return page({
         eyebrow: 'Installation complete',
         title: 'Your HubSpot app is connected.',
-        message: 'Mailchimp Workflow is ready in HubSpot. Return to the app settings to connect your Mailchimp account.',
+        message: 'Mailchimp App is ready in HubSpot. Return to the app settings to connect your Mailchimp account.',
         tone: 'success',
       });
     } catch (error) {
@@ -44,7 +44,7 @@ function page(
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mailchimp Workflow</title>
+    <title>Mailchimp App</title>
     <style>
       :root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #172033; background: #f7f8fc; }
       * { box-sizing: border-box; }

@@ -13,7 +13,7 @@ function MailchimpSettings({ context }: { context: ExtensionContext }) {
 
   return (
     <Flex direction="column" gap="small">
-      <Text>Connect a Mailchimp account to enable Mailchimp Workflow.</Text>
+      <Text>Connect a Mailchimp account to enable Mailchimp App.</Text>
       <Button href={{ url: connectUrl, external: true }} variant="primary">
         Connect Mailchimp
       </Button>

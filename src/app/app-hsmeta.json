@@ -3,7 +3,7 @@
   "type": "app",
   "config": {
     "description": "Send Mailchimp emails from HubSpot workflows.",
-    "name": "Mailchimp Workflow",
+    "name": "Mailchimp App",
     "distribution": "marketplace",
     "auth": {
       "type": "oauth",
