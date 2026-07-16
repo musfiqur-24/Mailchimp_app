@@ -1,4 +1,4 @@
-const tokenEndpoint = 'https://api.hubapi.com/oauth/v3/token';
+const tokenEndpoint = 'https://api.hubapi.com/oauth/2026-03/token';
 
 export async function completeHubSpotAuthorization(code: string): Promise<void> {
   const response = await fetch(tokenEndpoint, {
@@ -14,7 +14,14 @@ export async function completeHubSpotAuthorization(code: string): Promise<void> 
   });
 
   if (!response.ok) {
-    throw new Error(`HubSpot OAuth token exchange failed with status ${response.status}.`);
+    const error = (await response.json().catch(() => ({}))) as {
+      category?: string;
+      correlationId?: string;
+      message?: string;
+    };
+    throw new Error(
+      `HubSpot OAuth token exchange failed with status ${response.status}: ${error.category ?? 'UNKNOWN'} (${error.correlationId ?? 'no correlation ID'}) ${error.message ?? ''}`,
+    );
   }
 }
 
