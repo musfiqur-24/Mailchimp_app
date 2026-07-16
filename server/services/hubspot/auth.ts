@@ -3,7 +3,7 @@ import type { StoredPortalConnection } from '../../../types/oauth.js';
 
 const tokenEndpoint = 'https://api.hubapi.com/oauth/2026-03/token';
 
-export async function completeHubSpotAuthorization(code: string): Promise<void> {
+export async function completeHubSpotAuthorization(code: string): Promise<string> {
   const token = await requestHubSpotToken({
     grant_type: 'authorization_code',
     code,
@@ -11,6 +11,7 @@ export async function completeHubSpotAuthorization(code: string): Promise<void> 
   if (!token.hub_id) throw new Error('HubSpot did not return a portal ID.');
 
   await saveHubSpotToken(String(token.hub_id), token);
+  return String(token.hub_id);
 }
 
 export async function getHubSpotAccessToken(portalId: string): Promise<string> {

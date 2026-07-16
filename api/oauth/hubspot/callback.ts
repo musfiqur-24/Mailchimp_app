@@ -10,13 +10,11 @@ export default {
     }
 
     try {
-      await completeHubSpotAuthorization(code);
-      return page({
-        eyebrow: 'Installation complete',
-        title: 'Your HubSpot app is connected.',
-        message: 'Mailchimp App is ready in HubSpot. Return to the app settings to connect your Mailchimp account.',
-        tone: 'success',
-      });
+      const portalId = await completeHubSpotAuthorization(code);
+      return Response.redirect(
+        new URL(`/api/connect-mailchimp?portalId=${encodeURIComponent(portalId)}`, url.origin),
+        302,
+      );
     } catch (error) {
       console.error('HubSpot OAuth token exchange failed', error);
       return page(

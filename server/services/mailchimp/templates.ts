@@ -23,6 +23,10 @@ export async function getMailchimpTemplateOptions(
   const endpoint = new URL(`https://${connection.dataCenter}.api.mailchimp.com/3.0/templates`);
   endpoint.searchParams.set('count', String(pageSize));
   endpoint.searchParams.set('offset', String(offset));
+  // Mailchimp's API calls account-created saved templates "user" templates.
+  // Ask the API to filter them before pagination, then retain the check below
+  // as a defensive guard if its response ever contains another template type.
+  endpoint.searchParams.set('type', 'user');
 
   const response = await fetch(endpoint, {
     headers: { authorization: `Bearer ${connection.accessToken}` },
@@ -38,6 +42,7 @@ export async function getMailchimpTemplateOptions(
 
   const normalizedQuery = query?.trim().toLocaleLowerCase();
   const options = (payload.templates ?? [])
+    .filter((template) => template.type === 'user')
     .map((template) => ({
       label: template.name || template.title || `Template ${template.id}`,
       value: String(template.id),
@@ -75,6 +80,11 @@ function parseOffset(after?: string): number {
 }
 
 interface MailchimpTemplatesResponse {
-  templates?: Array<{ id: number | string; name?: string; title?: string }>;
+  templates?: Array<{
+    id: number | string;
+    type?: string;
+    name?: string;
+    title?: string;
+  }>;
   total_items?: number;
 }
